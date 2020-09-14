@@ -1,0 +1,45 @@
+import centrales.*
+import ciudades.*
+import region.*
+import turbinas.*
+
+describe "contextoDeLasCentralesDeSpringfield"{
+	
+	fixture {
+		centralAtomica.setVarillasDeUranio(10)
+		centralDeCarbon.setCapacidadEnToneladas(20)
+		springfield.setNecesidadProductiva(20)
+	}
+	
+	test "burnsConDiezVarillasProduce1MKwh"{
+		assert.that(centralAtomica.obtenerProduccionEnergetica() == 1)
+	}
+	
+	test "exBosqueConVeinteToneladasProduce18-5MKwh"{
+		assert.that(centralDeCarbon.obtenerProduccionEnergetica() == 18.5)
+	}
+	
+	test "elSuspiroProduce20MKwh"{
+		assert.that(centralEolica.obtenerProduccionEnergetica() == 2)
+	}
+	
+	test "centralEolicaEsLaUnicaContaminante"{
+		assert.that(springfield.obtenerCentralesContaminantes() == [centralDeCarbon])
+	}
+	
+	test "necesidadEnergeticaEs20"{
+		assert.that(springfield.cubreNecesidadProductiva())
+	}
+	
+	test "springfieldEstaAlHornoConNecesidadEnergeticaDe30"{
+		springfield.setNecesidadProductiva(30)
+		assert.that(springfield.estaEnElHorno())
+	}
+	
+	test "centralesMasProductivasSonExBosqueEHidroelectrica"{
+		assert.that(region.obtenerMejorCentralPorCiudad() == [centralHidroelectrica, centralDeCarbon])	
+	}
+	// CONSULTA > Si ponemos la lista al reves, no es igual. Esta bien que "hardcodeemos" el resultado?
+}
+
+

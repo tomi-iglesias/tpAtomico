@@ -2,11 +2,15 @@ import centrales.*
 
 object springfield {
 	
-	const necesidadProductiva = 3.5
+	var necesidadProductiva = 3.5
 	const centralesDeProduccionElectricas = [centralAtomica, centralDeCarbon, centralEolica]
 	
 	method getCentralesDeProduccionElectricas(){
 		return centralesDeProduccionElectricas
+	}
+	
+	method setNecesidadProductiva(unValor){
+		necesidadProductiva = unValor
 	}
 	
 	// PUNTO 1

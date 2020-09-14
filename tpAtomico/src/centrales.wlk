@@ -25,7 +25,7 @@ object centralDeCarbon{
 		capacidadEnToneladas = capacidad
 	}
 	
-	method obtenerProduccionEnergetica() = (0.5 + capacidadEnToneladas) * riquezaDelSuelo
+	method obtenerProduccionEnergetica() = 0.5 + capacidadEnToneladas * riquezaDelSuelo
 	
 	method contamina () = true
 }
